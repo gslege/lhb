@@ -10,26 +10,24 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@eace6381f8be684db5935d56cc8946fa85b89ec5
-
-      - name: Setup Python
-        uses: actions/setup-python@0a5c61591373683016365dec582f36875194c5f1
-        with:
-          python-version: "3.10"
-
-      - name: Install dependencies
+      - name: Clone repo
         run: |
+          git clone https://github.com/gslege/lhb.git .
+          git fetch origin main:main
+
+      - name: Install Python and dependencies
+        run: |
+          python3 --version
           pip install -r requirements.txt || true
 
       - name: Run script and save output
         run: |
-          python lhb.py
+          python3 lhb.py
 
-      - name: Commit result
+      - name: Commit and push result
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add lhb.html
           git commit -m "Auto update lhb.html [skip ci]" || echo "No changes to commit"
-          git push
+          git push origin main || true
