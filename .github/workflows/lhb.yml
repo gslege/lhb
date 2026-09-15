@@ -24,12 +24,12 @@ jobs:
 
       - name: Run script and save output
         run: |
-          python py lhb.py > lhb.html
+          python py/lhb.py > lhb.html
 
       - name: Commit result
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add lhb.html
-          git commit -m "Auto update Cdtools.txt [skip ci]" || echo "No changes to commit"
+          git commit -m "Auto update lhb.html [skip ci]" || echo "No changes to commit"
           git push
