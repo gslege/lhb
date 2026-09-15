@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@eace6381f8be684db5935d56cc8946fa85b89ec5
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@0a5c61591373683016365dec582f36875194c5f1
         with:
           python-version: "3.10"
 
