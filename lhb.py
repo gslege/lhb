@@ -628,7 +628,7 @@ h2.t-blue{{color:var(--blue)}}h2.t-gold{{color:var(--gold)}}h2.t-purple{{color:v
       if (h) {{
         closeLists();
         var lv = h[1].length;
-        out.push('<h' + lv + ' class="md-h">' + inline(h[2]) + '</h' + lv + '>');
+        out.push('<h' + lv + '>' + inline(h[2]) + '</h' + lv + '>');
         continue;
       }}
       var tq = line.match(/^>\s?(.*)$/);
