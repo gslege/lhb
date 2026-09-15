@@ -10,28 +10,27 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout with git
+      - name: Setup workspace
         run: |
-          rm -rf $GITHUB_WORKSPACE/*
-          git init $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE
-          git remote add origin https://github.com/gslege/lhb.git
+          if [ ! -d .git ]; then
+            git init
+            git remote add origin https://github.com/gslege/lhb.git
+          fi
           git fetch origin main
-          git checkout main
+          git reset --hard origin/main
 
-      - name: Install dependencies
+      - name: Install dependencies and run
         run: |
-          python3 -m pip install -r requirements.txt || true
-
-      - name: Run script
-        run: |
+          cd $GITHUB_WORKSPACE
+          python3 -m pip install -q requests
           python3 lhb.py
 
-      - name: Commit and push
+      - name: Push results
         run: |
           cd $GITHUB_WORKSPACE
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add lhb.html
-          git commit -m "Auto update lhb.html [skip ci]" || echo "No changes to commit"
+          git commit -m "Auto update lhb.html [skip ci]" || true
           git push origin main || true
