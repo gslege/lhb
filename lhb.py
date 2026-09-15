@@ -9,6 +9,8 @@ UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_15_7) AppleWebKit/537.36"
 EM_SESSION = requests.Session()
 EM_SESSION.trust_env = False  # 绕过系统代理，避免代理故障导致请求失败
 EM_SESSION.headers.update({"User-Agent": UA})
+TXT_OUTPUT_FILE = "lhb.html"
+
 _em_last = [0.0]
 def em_get(url, params=None, headers=None, timeout=15):
     wait = 1.2 - (time.time() - _em_last[0])
