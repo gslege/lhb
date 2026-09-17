@@ -1,1 +1,553 @@
-111
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>龙虎榜 2026-09-17</title>
+<style>
+:root{--bg:#0a0e17;--panel:#0e1626;--line:#1e2c44;--text:#e8f0ff;--muted:#7d93b3;
+--red:#ff5c6c;--green:#2fd39b;--gold:#ffc96b;--blue:#6aa9ff;--purple:#c08bff}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);
+font:14px/1.55 Inter,"Microsoft YaHei",sans-serif;scrollbar-width:none;
+-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
+.wrap{width:min(1400px,calc(100% - 32px));margin:0 auto;padding:16px 0 60px}
+h1{font-size:22px;margin:6px 0 4px}h1 span{color:var(--blue)}.sub{color:var(--muted);font-size:13px}
+.up{color:var(--red)}.down{color:var(--green)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:10px}
+.panel h2{margin:0 0 14px;font-size:16px}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline}
+.panel-head h2{margin:0 0 14px}
+.panel-head .date{color:var(--muted);font-size:13px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--muted);font-size:11px;letter-spacing:.04em;padding:9px 10px;border-bottom:1px solid var(--line)}
+th.sortable{cursor:pointer;user-select:none}
+th.sortable:hover{color:var(--text)}
+th .arr{font-size:9px;margin-left:3px;opacity:.7}
+td{padding:5px 10px;border-bottom:1px solid #16233a;vertical-align:middle}
+tbody tr:hover{background:#101c31}
+.reason{color:var(--muted);font-size:12px;max-width:300px}
+tr.zy td{background:#3a3210}
+.zy-badge{color:#ffd97a;font-weight:700;margin-left:4px}
+td.rank{color:var(--muted);font-weight:700;text-align:center}
+td.rank-1{color:#c08bff}
+td.rank-2{color:#c08bff}
+td.rank-3{color:#c08bff}
+.bd-name-rk-1{color:#c08bff}
+.bd-name-rk-2{color:#c08bff}
+.bd-name-rk-3{color:#c08bff}
+.cp-name{cursor:pointer}
+.cp-name:hover{color:var(--blue)}
+.zy-name{color:#ffd97a}
+.th-zy{color:#ffd97a !important}
+.zy-buy{color:#ff5c6c}.zy-sell{color:#2fd39b}
+tbody td strong{cursor:pointer}
+tbody td strong:hover{color:var(--blue)}
+.copied{color:#2fd39b !important}
+tr.hidden{display:none}
+.more{margin-top:10px;text-align:center}
+.more button{background:#12203a;color:#6aa9ff;border:1px solid #24406b;border-radius:6px;
+padding:6px 18px;font-size:13px;cursor:pointer}
+.more button:hover{background:#1a2c4d}
+.ai-btn{background:#3a2a10;color:#ffd97a;border:1px solid #8a6d1e;border-radius:6px;
+padding:4px 14px;font-size:13px;font-weight:700;cursor:pointer}
+.ai-btn:hover{background:#4a3515}
+#ai-box h1,#ai-box h2,#ai-box h3,#ai-box h4,#ai-box h5,#ai-box h6{color:var(--gold);margin:10px 0 6px;font-size:15px}
+#ai-box h1{font-size:17px}#ai-box h2{font-size:16px;border-bottom:1px solid var(--line);padding-bottom:5px}
+#ai-box .md-p{margin:5px 0;line-height:1.6}
+#ai-box .md-list{margin:4px 0 4px 18px;padding-left:12px}
+#ai-box .md-list li{margin:2px 0;line-height:1.55}
+#ai-box ol.md-list{list-style:decimal}#ai-box ul.md-list{list-style:disc}
+#ai-box .md-quote{margin:8px 0;padding:6px 12px;border-left:3px solid var(--gold);background:#1a2333;border-radius:0 6px 6px 0;color:#d8e4ff}
+#ai-box .md-quote p{margin:2px 0;line-height:1.6}
+#ai-box .md-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:12.5px}
+#ai-box .md-table th{background:#16233a;color:var(--gold);padding:5px 8px;border:1px solid var(--line);font-size:12px}
+#ai-box .md-table td{padding:4px 8px;border:1px solid var(--line);line-height:1.5}
+#ai-box .md-table tr:hover td{background:#101c31}
+#ai-box hr{border:none;border-top:1px solid var(--line);margin:10px 0}
+#ai-box code{background:#16233a;color:var(--green);padding:1px 6px;border-radius:4px;font-size:12.5px}
+#ai-box pre code{display:block;padding:10px 12px;line-height:1.6;overflow-x:auto}
+#ai-box strong{color:#ffd97a}
+footer{color:var(--muted);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+.overview{display:flex;flex-wrap:wrap;gap:10px;padding:4px 0}
+.mcard{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px;flex:1 1 0;text-align:center;max-width:200px}
+.mcard label{display:block;color:var(--muted);font-size:11px;margin-bottom:4px}
+.mcard b{font-size:16px;font-weight:700;margin-right:4px}
+.mcard em{font-style:normal;font-size:12px;color:var(--muted)}
+.mcard em.up{color:var(--red)}.mcard em.down{color:var(--green)}
+.mcard i{display:block;font-style:normal;font-size:12px;margin-top:2px}
+.lbc{color:var(--gold)}
+.reason .cp-name{margin-right:2px}
+.reason i{font-style:normal;font-size:11px;color:inherit;margin-right:8px}
+h2.t-blue{color:var(--blue)}h2.t-gold{color:var(--gold)}h2.t-purple{color:var(--purple)}h2.t-green{color:var(--green)}
+</style></head><body><div class="wrap">
+
+<div class="panel"><div class="panel-head"><h2 class="t-blue">市场速览<span class="date">（2026-09-17）</span></h2></div>
+<div class="overview"><span class="mcard"><label>总成交</label><b>18364 亿</b><em>元</em></span><span class="mcard"><label>上证指数</label><b class="down">-0.41%</b></span><span class="mcard"><label>创业板指</label><b class="down">-0.40%</b></span><span class="mcard"><label>科创综指</label><b class="down">-0.61%</b></span>
+<span class="mcard"><label>昨日上榜</label><b>33</b><em>只</em></span>
+<span class="mcard"><label>上涨家数</label><b class="up">2575</b><em class="up">家</em></span>
+<span class="mcard"><label>下跌家数</label><b class="down">2820</b><em class="down">家</em></span>
+<span class="mcard"><label>涨停数</label><b class="up">51</b><em class="up">只</em></span>
+<span class="mcard"><label>跌停数</label><b class="down">6</b><em class="down">只</em></span></div>
+</div>
+
+<div class="panel"><div class="panel-head"><h2 class="t-gold">全市场龙虎榜 · 33 只<span class="date">（2026-09-17）</span></h2><span style="display:flex;align-items:center"><button class="ai-btn" id="ai-link">AI分析</button></span></div>
+<div id="ai-box" style="display:none;background:#3a3210;border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-bottom:14px;font-size:13px;line-height:1.6"></div>
+<script type="application/json" id="ai-data">"User Safety: safe"</script>
+<div style="overflow-x:auto"><table>
+<thead><tr>
+<th class="sortable" data-type="num">序号</th>
+<th class="sortable" data-type="num">代码</th>
+<th class="sortable" data-type="str">名称</th>
+<th class="sortable" data-type="num">涨跌幅</th>
+<th class="sortable" data-type="num">净买额</th>
+<th class="sortable" data-type="num">换手</th>
+<th class="sortable" data-type="str">板块</th>
+<th class="sortable th-zy" data-type="zy">紫阳东路</th>
+</tr></thead>
+<tbody><tr class="zy"><td>1</td><td>000981</td><td><strong><span class="zy-name">山子高科</span></strong></td>
+      <td class="up">+9.85%</td>
+      <td class="up">+3.94亿</td>
+      <td>9%</td>
+      <td>交运设备</td>
+      <td><span class="zy-badge"><span class="zy-buy">买1.78亿</span></span></td></tr><tr><td>2</td><td>002640</td><td><strong>跨境通</strong></td>
+      <td class="up">+9.91%</td>
+      <td class="up">+2.14亿</td>
+      <td>19%</td>
+      <td>互联网</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>3</td><td>002655</td><td><strong>共达电声</strong></td>
+      <td class="up">+10.01%</td>
+      <td class="up">+1.83亿</td>
+      <td>10%</td>
+      <td>电子设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>4</td><td>300243</td><td><strong>瑞丰高材</strong></td>
+      <td class="up">+6.90%</td>
+      <td class="up">+1.44亿</td>
+      <td>34%</td>
+      <td>基础化工</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>5</td><td>002824</td><td><strong>和胜股份</strong></td>
+      <td class="up">+5.66%</td>
+      <td class="up">+1.41亿</td>
+      <td>23%</td>
+      <td>交运设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>6</td><td>000572</td><td><strong>海马汽车</strong></td>
+      <td class="up">+7.92%</td>
+      <td class="up">+1.17亿</td>
+      <td>13%</td>
+      <td>交运设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>7</td><td>300434</td><td><strong>金石亚药</strong></td>
+      <td class="up">+19.98%</td>
+      <td class="up">+1.09亿</td>
+      <td>13%</td>
+      <td>医药生物</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>8</td><td>000980</td><td><strong>众泰汽车</strong></td>
+      <td class="up">+10.23%</td>
+      <td class="up">+6335万</td>
+      <td>13%</td>
+      <td>交运设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>9</td><td>300939</td><td><strong>秋田微</strong></td>
+      <td class="up">+17.63%</td>
+      <td class="up">+3856万</td>
+      <td>8%</td>
+      <td>电子设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr><td>10</td><td>002285</td><td><strong>世联行</strong></td>
+      <td class="up">+10.04%</td>
+      <td class="up">+2913万</td>
+      <td>7%</td>
+      <td>房地产</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>11</td><td>002579</td><td><strong>中京电子</strong></td>
+      <td class="up">+4.22%</td>
+      <td class="up">+2718万</td>
+      <td>31%</td>
+      <td>电子设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>12</td><td>002912</td><td><strong>中新赛克</strong></td>
+      <td class="down">-8.63%</td>
+      <td class="up">+1902万</td>
+      <td>19%</td>
+      <td>信息技术</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>13</td><td>003001</td><td><strong>中岩大地</strong></td>
+      <td class="up">+10.02%</td>
+      <td class="up">+1659万</td>
+      <td>32%</td>
+      <td>建筑</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>14</td><td>301390</td><td><strong>经纬股份</strong></td>
+      <td class="up">+20.00%</td>
+      <td class="up">+1426万</td>
+      <td>1%</td>
+      <td>休闲、生活及专业服务</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>15</td><td>300741</td><td><strong>华宝股份</strong></td>
+      <td class="up">+20.01%</td>
+      <td class="up">+1168万</td>
+      <td>5%</td>
+      <td>食品饮料</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>16</td><td>920065</td><td><strong>千岸科技</strong></td>
+      <td class="up">+6.49%</td>
+      <td class="up">+818万</td>
+      <td>25%</td>
+      <td>-</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>17</td><td>002531</td><td><strong>天顺风能</strong></td>
+      <td class="up">+4.48%</td>
+      <td class="up">+651万</td>
+      <td>15%</td>
+      <td>电气设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>18</td><td>301699</td><td><strong>洛轴股份</strong></td>
+      <td class="up">+4.02%</td>
+      <td class="up">+616万</td>
+      <td>41%</td>
+      <td>机械设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>19</td><td>002796</td><td><strong>世嘉科技</strong></td>
+      <td class="up">+10.01%</td>
+      <td class="up">+603万</td>
+      <td>10%</td>
+      <td>电子设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>20</td><td>920268</td><td><strong>百迈科</strong></td>
+      <td class="down">-5.30%</td>
+      <td class="up">+267万</td>
+      <td>32%</td>
+      <td>-</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>21</td><td>920895</td><td><strong>花溪科技</strong></td>
+      <td class="up">+19.40%</td>
+      <td class="up">+155万</td>
+      <td>36%</td>
+      <td>-</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>22</td><td>301520</td><td><strong>万邦医药</strong></td>
+      <td class="up">+10.00%</td>
+      <td class="down">-124万</td>
+      <td>54%</td>
+      <td>医药生物</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>23</td><td>001209</td><td><strong>洪兴股份</strong></td>
+      <td class="up">+0.16%</td>
+      <td class="down">-304万</td>
+      <td>19%</td>
+      <td>纺织服装</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>24</td><td>002997</td><td><strong>瑞鹄模具</strong></td>
+      <td class="down">-8.48%</td>
+      <td class="down">-504万</td>
+      <td>4%</td>
+      <td>交运设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>25</td><td>920298</td><td><strong>腾信精密</strong></td>
+      <td class="up">+8.24%</td>
+      <td class="down">-1258万</td>
+      <td>73%</td>
+      <td>-</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>26</td><td>301689</td><td><strong>电科思仪</strong></td>
+      <td class="down">-1.78%</td>
+      <td class="down">-1430万</td>
+      <td>39%</td>
+      <td>机械设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>27</td><td>000056</td><td><strong>*ST皇庭</strong></td>
+      <td class="down">-9.93%</td>
+      <td class="down">-1827万</td>
+      <td>7%</td>
+      <td>商贸零售</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>28</td><td>920176</td><td><strong>维琪科技</strong></td>
+      <td class="down">-0.96%</td>
+      <td class="down">-2260万</td>
+      <td>30%</td>
+      <td>-</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>29</td><td>002137</td><td><strong>实益达</strong></td>
+      <td class="up">+4.27%</td>
+      <td class="down">-3731万</td>
+      <td>34%</td>
+      <td>电子设备</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>30</td><td>000978</td><td><strong>桂林旅游</strong></td>
+      <td class="down">-9.33%</td>
+      <td class="down">-5568万</td>
+      <td>35%</td>
+      <td>休闲、生活及专业服务</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>31</td><td>300189</td><td><strong>神农种业</strong></td>
+      <td class="up">+8.62%</td>
+      <td class="down">-8754万</td>
+      <td>34%</td>
+      <td>农林牧渔</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>32</td><td>002584</td><td><strong>西陇科学</strong></td>
+      <td class="down">-0.31%</td>
+      <td class="down">-1.70亿</td>
+      <td>54%</td>
+      <td>基础化工</td>
+      <td><span class="zy-badge">-</span></td></tr><tr class="hidden"><td>33</td><td>002163</td><td><strong>海南发展</strong></td>
+      <td class="down">-9.97%</td>
+      <td class="down">-1.86亿</td>
+      <td>10%</td>
+      <td>建筑</td>
+      <td><span class="zy-badge">-</span></td></tr></tbody></table></div>
+<div class="more"><button id="btn-more" onclick="var hs=document.querySelectorAll('tr.hidden');for(var i=0;i<hs.length;i++)hs[i].classList.remove('hidden');this.parentNode.style.display='none'">展开全部（23 只）</button></div>
+</div>
+
+<div class="panel"><div class="panel-head"><h2 class="t-purple">板块汇总 · 16 个板块<span class="date">（2026-09-17）</span></h2></div>
+<div style="overflow-x:auto"><table>
+<thead><tr>
+<th class="sortable" data-type="num">序号</th><th class="sortable" data-type="str">板块</th><th class="sortable" data-type="num">上榜家数</th><th class="sortable" data-type="num">净买额合计</th><th class="sortable th-zy" data-type="zy">紫阳东路</th><th>个股</th>
+</tr></thead>
+<tbody><tr><td class="rank rank-1">1</td><td><strong class="bd-name bd-name-rk-1" style="color:#c08bff">交运设备</strong></td>
+      <td>5</td>
+      <td class="up">+7.10亿</td>
+      <td><span class="zy-badge">1</span></td>
+      <td class="reason"><span class="cp-name zy-name">山子高科</span>、<span class="cp-name">和胜股份</span>、<span class="cp-name">海马汽车</span>、<span class="cp-name">众泰汽车</span>、<span class="cp-name">瑞鹄模具</span></td></tr><tr><td class="rank rank-2">2</td><td><strong class="bd-name bd-name-rk-2" style="color:#c08bff">电子设备</strong></td>
+      <td>5</td>
+      <td class="up">+2.17亿</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">共达电声</span>、<span class="cp-name">秋田微</span>、<span class="cp-name">中京电子</span>、<span class="cp-name">世嘉科技</span>、<span class="cp-name">实益达</span></td></tr><tr><td class="rank rank-3">3</td><td><strong class="bd-name bd-name-rk-3" style="color:#c08bff">未知</strong></td>
+      <td>5</td>
+      <td class="down">-2278万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">千岸科技</span>、<span class="cp-name">百迈科</span>、<span class="cp-name">花溪科技</span>、<span class="cp-name">腾信精密</span>、<span class="cp-name">维琪科技</span></td></tr><tr><td class="rank">4</td><td><strong class="bd-name">医药生物</strong></td>
+      <td>2</td>
+      <td class="up">+1.08亿</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">金石亚药</span>、<span class="cp-name">万邦医药</span></td></tr><tr><td class="rank">5</td><td><strong class="bd-name">机械设备</strong></td>
+      <td>2</td>
+      <td class="down">-814万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">洛轴股份</span>、<span class="cp-name">电科思仪</span></td></tr><tr><td class="rank">6</td><td><strong class="bd-name">基础化工</strong></td>
+      <td>2</td>
+      <td class="down">-2614万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">瑞丰高材</span>、<span class="cp-name">西陇科学</span></td></tr><tr><td class="rank">7</td><td><strong class="bd-name">休闲、生活及专业服务</strong></td>
+      <td>2</td>
+      <td class="down">-4142万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">经纬股份</span>、<span class="cp-name">桂林旅游</span></td></tr><tr><td class="rank">8</td><td><strong class="bd-name">建筑</strong></td>
+      <td>2</td>
+      <td class="down">-1.69亿</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">中岩大地</span>、<span class="cp-name">海南发展</span></td></tr><tr><td class="rank">9</td><td><strong class="bd-name">互联网</strong></td>
+      <td>1</td>
+      <td class="up">+2.14亿</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">跨境通</span></td></tr><tr><td class="rank">10</td><td><strong class="bd-name">房地产</strong></td>
+      <td>1</td>
+      <td class="up">+2913万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">世联行</span></td></tr><tr class="hidden"><td class="rank">11</td><td><strong class="bd-name">信息技术</strong></td>
+      <td>1</td>
+      <td class="up">+1902万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">中新赛克</span></td></tr><tr class="hidden"><td class="rank">12</td><td><strong class="bd-name">食品饮料</strong></td>
+      <td>1</td>
+      <td class="up">+1168万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">华宝股份</span></td></tr><tr class="hidden"><td class="rank">13</td><td><strong class="bd-name">电气设备</strong></td>
+      <td>1</td>
+      <td class="up">+651万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">天顺风能</span></td></tr><tr class="hidden"><td class="rank">14</td><td><strong class="bd-name">纺织服装</strong></td>
+      <td>1</td>
+      <td class="down">-304万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">洪兴股份</span></td></tr><tr class="hidden"><td class="rank">15</td><td><strong class="bd-name">商贸零售</strong></td>
+      <td>1</td>
+      <td class="down">-1827万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">*ST皇庭</span></td></tr><tr class="hidden"><td class="rank">16</td><td><strong class="bd-name">农林牧渔</strong></td>
+      <td>1</td>
+      <td class="down">-8754万</td>
+      <td>-</td>
+      <td class="reason"><span class="cp-name">神农种业</span></td></tr></tbody></table></div>
+<div class="more"><button id="btn-bmore" onclick="var hs=this.closest('.panel').querySelectorAll('tr.hidden');for(var i=0;i<hs.length;i++)hs[i].classList.remove('hidden');this.parentNode.style.display='none'">展开全部（6 个）</button></div>
+</div>
+
+<div class="panel"><div class="panel-head"><h2 class="t-green">连板梯队 · 4 档<span class="date">（2026-09-17）</span></h2></div>
+<div style="overflow-x:auto"><table>
+<thead><tr>
+<th class="sortable" data-type="num">梯队</th><th class="sortable" data-type="num">家数</th><th>个股</th>
+</tr></thead>
+<tbody><tr><td><strong class="lbc">5 板</strong></td>
+      <td>1</td>
+      <td class="reason"><span class="cp-name">澳弘电子</span><i class="up">+10.0%</i></td></tr><tr><td><strong class="lbc">3 板</strong></td>
+      <td>3</td>
+      <td class="reason"><span class="cp-name">华瓷股份</span><i class="up">+10.0%</i>、<span class="cp-name">锡华科技</span><i class="up">+10.0%</i>、<span class="cp-name">中晶科技</span><i class="up">+10.0%</i></td></tr><tr><td><strong class="lbc">2 板</strong></td>
+      <td>5</td>
+      <td class="reason"><span class="cp-name">世联行</span><i class="up">+10.0%</i>、<span class="cp-name">中岩大地</span><i class="up">+10.0%</i>、<span class="cp-name">共达电声</span><i class="up">+10.0%</i>、<span class="cp-name">万向德农</span><i class="up">+10.0%</i>、<span class="cp-name">内蒙新华</span><i class="up">+10.0%</i></td></tr><tr class="hidden"><td><strong class="lbc">1 板</strong></td>
+      <td>38</td>
+      <td class="reason"><span class="cp-name">华宝股份</span><i class="up">+20.0%</i>、<span class="cp-name">经纬股份</span><i class="up">+20.0%</i>、<span class="cp-name">金石亚药</span><i class="up">+20.0%</i>、<span class="cp-name">众泰汽车</span><i class="up">+10.2%</i>、<span class="cp-name">金杯汽车</span><i class="up">+10.2%</i>、<span class="cp-name">云煤能源</span><i class="up">+10.1%</i>、<span class="cp-name">华英农业</span><i class="up">+10.1%</i>、<span class="cp-name">龙头股份</span><i class="up">+10.1%</i>、<span class="cp-name">新宏泽</span><i class="up">+10.1%</i>、<span class="cp-name">敦煌种业</span><i class="up">+10.0%</i>、<span class="cp-name">恒丰纸业</span><i class="up">+10.0%</i>、<span class="cp-name">南华生物</span><i class="up">+10.0%</i>、<span class="cp-name">三峡新材</span><i class="up">+10.0%</i>、<span class="cp-name">克来机电</span><i class="up">+10.0%</i>、<span class="cp-name">安凯客车</span><i class="up">+10.0%</i>、<span class="cp-name">积成电子</span><i class="up">+10.0%</i>、<span class="cp-name">科森科技</span><i class="up">+10.0%</i>、<span class="cp-name">均胜电子</span><i class="up">+10.0%</i>、<span class="cp-name">招商轮船</span><i class="up">+10.0%</i>、<span class="cp-name">沃顿科技</span><i class="up">+10.0%</i>、<span class="cp-name">先导基电</span><i class="up">+10.0%</i>、<span class="cp-name">冠盛股份</span><i class="up">+10.0%</i>、<span class="cp-name">北特科技</span><i class="up">+10.0%</i>、<span class="cp-name">百花医药</span><i class="up">+10.0%</i>、<span class="cp-name">新中港</span><i class="up">+10.0%</i>、<span class="cp-name">大连圣亚</span><i class="up">+10.0%</i>、<span class="cp-name">世嘉科技</span><i class="up">+10.0%</i>、<span class="cp-name">天海电子</span><i class="up">+10.0%</i>、<span class="cp-name">雪天盐业</span><i class="up">+10.0%</i>、<span class="cp-name">凯迪股份</span><i class="up">+10.0%</i>、<span class="cp-name">华软科技</span><i class="up">+10.0%</i>、<span class="cp-name">龙版传媒</span><i class="up">+10.0%</i>、<span class="cp-name">金健米业</span><i class="up">+10.0%</i>、<span class="cp-name">上海物贸</span><i class="up">+10.0%</i>、<span class="cp-name">吉鑫科技</span><i class="up">+10.0%</i>、<span class="cp-name">跨境通</span><i class="up">+9.9%</i>、<span class="cp-name">华纺股份</span><i class="up">+9.9%</i>、<span class="cp-name">山子高科</span><i class="up">+9.9%</i></td></tr></tbody></table></div>
+<div class="more"><button onclick="var hs=this.closest('.panel').querySelectorAll('tr.hidden');for(var i=0;i<hs.length;i++)hs[i].classList.remove('hidden');this.parentNode.style.display='none'">展开全部（1板 38 只）</button></div></div>
+
+<script>
+(function(){
+  // 排序: 泛化到页面所有带 sortable 表头的表格
+  function key(tr, col, type) {
+    var td = tr.children[col];
+    var t = td.textContent.trim();
+    if (type === 'num') {
+      var neg = t.indexOf('+') === 0 ? 1 : (t.indexOf('-') === 0 ? -1 : 1);
+      var m = t.replace(/[+%,-]/g, '');
+      var v = parseFloat(m);
+      if (isNaN(v)) v = -Infinity;
+      if (t.indexOf('亿') >= 0) v *= 10000;
+      return v * neg;
+    }
+    if (type === 'zy') {
+      // 紫阳东路列: 主表按买卖金额合计, 板块表按家数, 有值排前面
+      var b = td.querySelector('.zy-buy'), s = td.querySelector('.zy-sell');
+      if (b || s) {
+        function w(el) {
+          if (!el) return 0;
+          var x = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+          if (isNaN(x)) return 0;
+          return el.textContent.indexOf('亿') >= 0 ? x * 10000 : x;
+        }
+        return (b ? w(b) : 0) + (s ? w(s) : 0);
+      }
+      var n = parseFloat(t);
+      return isNaN(n) ? -Infinity : n;
+    }
+    return t;
+  }
+  document.querySelectorAll('table').forEach(function (tbl) {
+    var tbody = tbl.querySelector('tbody');
+    var ths = tbl.querySelectorAll('th.sortable');
+    if (!ths.length) return;
+    var curCol = -1, curDesc = true;
+    ths.forEach(function (th, col) {
+      th.onclick = function () {
+        var type = th.dataset.type;
+        if (col === curCol) curDesc = !curDesc; else { curCol = col; curDesc = true; }
+        var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+        rows.sort(function (a, b) {
+          var ka = key(a, col, type), kb = key(b, col, type);
+          var c;
+          if (typeof ka === 'number' && typeof kb === 'number') c = ka - kb;
+          else c = String(ka).localeCompare(String(kb), 'zh');
+          return curDesc ? -c : c;
+        });
+        rows.forEach(function (tr) { tbody.appendChild(tr); });
+        ths.forEach(function (t) {
+          var a = t.querySelector('.arr');
+          if (a) a.remove();
+        });
+        var arr = document.createElement('span');
+        arr.className = 'arr';
+        arr.textContent = curDesc ? '▼' : '▲';
+        th.appendChild(arr);
+      };
+    });
+  });
+  // 点击复制: 主表股票名称 + 板块表个股名称(仅 .cp-name, 板块名不复制)
+  document.querySelectorAll('table tbody').forEach(function (tbody) {
+    tbody.addEventListener('click', function (e) {
+      var el = e.target.closest('.cp-name, td strong');
+      if (!el || el.classList.contains('bd-name') || el.classList.contains('lbc')) return;
+      var name = el.textContent.trim();
+      function done() {
+        var old = el.textContent;
+        el.textContent = '已复制';
+        el.classList.add('copied');
+        setTimeout(function () { el.textContent = old; el.classList.remove('copied'); }, 800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(name).then(done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = name;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        done();
+      }
+    });
+  });
+  // AI 分析: 展示 Python 端预生成的结果（Markdown 渲染 + 打字机效果），无浏览器请求
+  function mdToHtml(md) {
+    var lines = md.replace(/\r/g, '').split('\n');
+    var out = [], inCode = false, listStack = [];
+    function closeLists() { while (listStack.length) out.push('</' + listStack.pop() + '>'); }
+    function inline(s) {
+      s = s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+      s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+      return s;
+    }
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      if (/^```/.test(line.trim())) {  // 代码块
+        if (inCode) { out.push('</code></pre>'); inCode = false; }
+        else { closeLists(); out.push('<pre><code>'); inCode = true; }
+        continue;
+      }
+      if (inCode) { out.push(line); continue; }
+      if (/^\s*$/.test(line)) { closeLists(); continue; }
+      if (/^(-{3,}|\*{3,})$/.test(line.trim())) { closeLists(); out.push('<hr>'); continue; }
+      var h = line.match(/^(#{1,6})\s+(.*)$/);
+      if (h) {
+        closeLists();
+        var lv = h[1].length;
+        out.push('<h' + lv + '>' + inline(h[2]) + '</h' + lv + '>');
+        continue;
+      }
+      var tq = line.match(/^>\s?(.*)$/);
+      if (tq) {
+        closeLists();
+        if (!out.length || out[out.length - 1].indexOf('<blockquote') < 0 || out[out.length-1].indexOf('</blockquote>') >= 0)
+          out.push('<blockquote class="md-quote"><p>' + inline(tq[1]) + '</p>');
+        else out[out.length - 1] = out[out.length - 1].replace(/<\/p>$/, '') + '<br>' + inline(tq[1]) + '</p>';
+        continue;
+      }
+      var tb = line.match(/^\|(.+)\|$/);
+      if (tb && i + 1 < lines.length && /^\|[\s:|-]+\|$/.test(lines[i + 1].trim())) {
+        closeLists();
+        var heads = tb[1].split('|').map(function (x) { return x.trim(); });
+        var rows = [], j = i + 2;
+        while (j < lines.length && /^\|(.+)\|$/.test(lines[j].trim())) {
+          rows.push(lines[j].trim().slice(1, -1).split('|').map(function (x) { return x.trim(); }));
+          j++;
+        }
+        i = j - 1;
+        var t = '<table class="md-table"><thead><tr>';
+        heads.forEach(function (c) { t += '<th>' + inline(c) + '</th>'; });
+        t += '</tr></thead><tbody>';
+        rows.forEach(function (r) {
+          t += '<tr>';
+          r.forEach(function (c) { t += '<td>' + inline(c) + '</td>'; });
+          t += '</tr>';
+        });
+        t += '</tbody></table>';
+        out.push(t);
+        continue;
+      }
+      var ul = line.match(/^(\s*)[-*+]\s+(.*)$/);
+      var ol = line.match(/^(\s*)\d+[.、]\s+(.*)$/);
+      if (ul || ol) {
+        var tag = ul ? 'ul' : 'ol', indent = (ul || ol)[1].length;
+        var want = Math.min(Math.floor(indent / 2) + 1, 3);
+        while (listStack.length < want) { out.push('<' + tag + ' class="md-list">'); listStack.push(tag); }
+        while (listStack.length > want) { out.push('</' + listStack.pop() + '>'); }
+        out.push('<li>' + inline((ul || ol)[2]) + '</li>');
+        continue;
+      }
+      closeLists();
+      out.push('<p class="md-p">' + inline(line) + '</p>');
+    }
+    closeLists();
+    if (inCode) out.push('</code></pre>');
+    return out.join('\n');
+  }
+  document.getElementById('ai-link').onclick = function (e) {
+    e.preventDefault();
+    var box = document.getElementById('ai-box');
+    var dataEl = document.getElementById('ai-data');
+    var text = null;
+    try { text = JSON.parse(dataEl.textContent); } catch (err) {}
+    box.style.display = 'block';
+    if (!text) {
+      box.innerHTML = '<span style="color:var(--muted)">AI 分析未生成（生成报告时接口失败或无数据），请重新运行脚本。</span>';
+      return;
+    }
+    var full = mdToHtml(text);
+    if (box.dataset.done) { box.innerHTML = full; return; }
+    box.dataset.done = '1';
+    box.innerHTML = '';
+    // 打字机: 按段落渐进渲染, 避免半截 HTML 标签
+    var i = 0, step = 3;
+    (function type() {
+      if (i >= text.length) { box.innerHTML = full; return; }
+      i += step;
+      box.innerHTML = mdToHtml(text.slice(0, i));
+      setTimeout(type, 16);
+    })();
+  };
+})();
+</script>
+</div></body></html>
