@@ -31,6 +31,6 @@ jobs:
           cd $GITHUB_WORKSPACE
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add lhb.txt
+          git add lhb.txt lhb.html
           git commit -m "Auto update lhb.txt [skip ci]" || true
           git push origin main || true
